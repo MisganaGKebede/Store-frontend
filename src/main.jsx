@@ -8,7 +8,7 @@ import ProductDetail from "./ProductDetail.jsx";
 import CartPage from "./CartPage.jsx";
 import CheckoutPage from "./CheckoutPage.jsx";
 import ThankYouPage from "./ThankYouPage.jsx";
-import LoginPage from "./LoginPage.jsx";
+import Loginpage from "./Loginpage.jsx";
 import SignupPage from "./SignupPage.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import { AuthProvider } from "./AuthContext";
