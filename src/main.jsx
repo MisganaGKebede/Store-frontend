@@ -26,7 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/shop" element={<App />} />      {/* ✅ Shop/products route */}
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<Loginpage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
           <Route
