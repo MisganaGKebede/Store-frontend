@@ -12,7 +12,7 @@ export default function App() {
     // ✅ Mark that user has entered the site
     localStorage.setItem("enteredSite", "true");
 
-    fetch("http://localhost:8000/products/")
+    fetch("https://store-backend-36zr.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error("❌ Failed to fetch products", err));
