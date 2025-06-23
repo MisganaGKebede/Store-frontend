@@ -8,21 +8,26 @@ export default function ProductDetail() {
   const user = localStorage.getItem("username") || "guest";
 
   useEffect(() => {
-  fetch("https://store-backend-36zr.onrender.com/products")
-    .then((res) => res.json())
-    .then((data) => {
-      if (Array.isArray(data)) {
-        setProducts(data);
-      } else {
-        console.error("Expected array but got:", data);
-        setProducts([]); // fallback
-      }
-    })
-    .catch((err) => {
-      console.error("Error fetching products:", err);
-    });
-}, []);
-
+    fetch("https://store-backend-36zr.onrender.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          const found = data.find((p) => p.id === parseInt(id));
+          if (found) {
+            setProduct(found);
+          } else {
+            toast.error("Product not found");
+          }
+        } else {
+          console.error("Expected array but got:", data);
+          toast.error("Invalid response from server");
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching products:", err);
+        toast.error("Failed to load product");
+      });
+  }, [id]);
 
   const addToCart = () => {
     const cartKey = `cart-${user}`;
@@ -41,7 +46,9 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="text-center mt-10 text-gray-500">Loading product...</div>
+      <div className="text-center mt-10 text-gray-500">
+        Loading product...
+      </div>
     );
   }
 
@@ -70,7 +77,9 @@ export default function ProductDetail() {
         />
         <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
         <p className="text-gray-600 mb-2">{product.description}</p>
-        <p className="text-blue-600 font-bold text-xl mb-4">${product.price}</p>
+        <p className="text-blue-600 font-bold text-xl mb-4">
+          ${product.price}
+        </p>
 
         <button
           onClick={addToCart}
