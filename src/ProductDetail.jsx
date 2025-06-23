@@ -8,7 +8,7 @@ export default function ProductDetail() {
   const user = localStorage.getItem("username") || "guest";
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/products")
+    fetch("https://store-backend-36zr.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((p) => p.id === parseInt(id));
