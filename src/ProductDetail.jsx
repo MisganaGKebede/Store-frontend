@@ -8,17 +8,21 @@ export default function ProductDetail() {
   const user = localStorage.getItem("username") || "guest";
 
   useEffect(() => {
-    fetch("https://store-backend-36zr.onrender.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        const found = data.find((p) => p.id === parseInt(id));
-        setProduct(found);
-      })
-      .catch((err) => {
-        console.error("Failed to load product", err);
-        toast.error("Failed to load product");
-      });
-  }, [id]);
+  fetch("https://store-backend-36zr.onrender.com/products")
+    .then((res) => res.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
+        setProducts(data);
+      } else {
+        console.error("Expected array but got:", data);
+        setProducts([]); // fallback
+      }
+    })
+    .catch((err) => {
+      console.error("Error fetching products:", err);
+    });
+}, []);
+
 
   const addToCart = () => {
     const cartKey = `cart-${user}`;
