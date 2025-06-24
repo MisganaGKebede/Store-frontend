@@ -37,7 +37,7 @@ export default function App() {
     <div className="max-w-6xl mx-auto p-6">
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center gap-4">
-          <h1 className="text-2xl font-bold">🍓 Organic Market</h1>
+          <h1 className="text-2xl font-bold">🌿 Ecolora</h1>
           {username ? (
             <span className="text-gray-600">Hi, {username}</span>
           ) : (
